@@ -1,16 +1,10 @@
 import socket
-def client_program():
-    host = "192.168.43.1"
-    port  = 5000
 
-    client_socket = socket.socket()
-    client_socket.connect((host, port)) 
+HOST = "127.0.0.1"
+PORT = 65432
 
-    while True:
-        data = client_socket.recv(1024).decode()
-        print('Recive from server')
-    
-    client_socket.close()
+with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+    s.connect((HOST, PORT))
+    data = s.recv(1024)
 
-if __name__ == '__main__':
-    client_program()
+print(f"Receved {data!r}")
