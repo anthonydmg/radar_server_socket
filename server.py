@@ -18,7 +18,7 @@ with socket.socket(socket.AF_INET,  socket.SOCK_STREAM) as s:
         print(f"Connected by {addr}")
         #DistanceDectector.start()
         while True:
-            counter_str  = "Count: " + str(count)
+            counter_str  = "Count: " + str(COUNT)
             conn.sendall(counter_str.encode())
             time.sleep(1)
             COUNT += 1
