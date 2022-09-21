@@ -1,20 +1,27 @@
 import socket
 import time
+from module_radar import ModuleDistanceDetector
+
 count = 1 
 
 HOST = "127.0.0.1"
 PORT = 65432  
 COUNT = 0
+
+#DistanceDectector = ModuleDistanceDetector()
+
 with socket.socket(socket.AF_INET,  socket.SOCK_STREAM) as s:
     s.bind((HOST, PORT))
     s.listen()
     conn, addr = s.accept()
     with conn:
         print(f"Connected by {addr}")
+        #DistanceDectector.start()
         while True:
-            conn.sendall(b"Hello World")
+            counter_str  = "Count: " + str(count)
+            conn.sendall(counter_str.encode())
             time.sleep(1)
-        
+            COUNT += 1
     
 #def server_program():
 #    host = socket.gethos()
